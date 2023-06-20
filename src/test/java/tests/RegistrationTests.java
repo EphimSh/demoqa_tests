@@ -10,40 +10,54 @@ public class RegistrationTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     public static String imgFilePath = "src/test/resources/haha.jpg";
 
+    private static String imgFileName = imgFilePath.substring(imgFilePath.lastIndexOf("/") + 1);
+
     @Test
     void mySuccessfulRegistrationFormTest(){
 
-        String firstname = getRandomString(10),
-                lastName = getRandomString(10),
-                userEmail = getRandomEmail(),
-                userNumber = getRandomPhoneNumber();
+        String firstname = faker.name().firstName(),
+                lastName = faker.name().lastName(),
+                userEmail = faker.internet().emailAddress(),
+                gender = getRandomGender(),
+                userNumber = faker.phoneNumber().subscriberNumber(10),
+                day = String.format("%02d", faker.number().numberBetween(1, 28)),
+                month = getRandomMonth(),
+                year = String.valueOf(getRandomInt(1900, 2100)),
+                subject = getRandomSubject(),
+                hobby = getRandomHobby(),
+                address = faker.address().fullAddress(),
+                state = getRandomState(),
+                city = getRandomCity();
+
+
+
 
         registrationPage.openPage()
                 .removeBanner()
                 .setFirstName(firstname)
                 .setLastName(lastName)
                 .setEmail(userEmail)
-                .selectGender(getRandomGender()) // male, female, other
+                .selectGender(gender) // male, female, other
                 .setUserMobNumber(userNumber) // 10 digits
-                .setDateOfBirth("16", "february", "1992")
-                .subjectSet("Computer Science")
-                .pickHobbies("Sports,Reading, Music") // there are only: Sports, Reading, Music
+                .setDateOfBirth(day, month, year)
+                .subjectSet(subject)
+                .pickHobbies(hobby) // there are only: Sports, Reading, Music
                 .uploadPicture(imgFilePath)
-                .setCurrentAddress("Russia, Saint-Petersburg")
-                .selectStateAndCity("NCR", "Gurgaon") // NCR : Delhi, Gurgaon, Noida; Uttar Pradesh : Arga, Lucknow, Merrut
+                .setCurrentAddress(address)
+                .selectStateAndCity(state, city) // NCR : Delhi, Gurgaon, Noida; Uttar Pradesh : Arga, Lucknow, Merrut
                 .pressSubmitButton();
 
 
         registrationPage
                 .formVerificationWindow("Student Name", firstname + " " + lastName)
                 .formVerificationWindow("Student Email", userEmail)
-                .formVerificationWindow("Gender", "other")
-                .formVerificationWindow("Mobile", "1010101010")
-                .formVerificationWindow("Date of Birth", "16 february,1992")
-                .formVerificationWindow("Subjects", "Computer Science")
-                .formVerificationWindow("Hobbies", "Sports, Reading, Music")
-                .formVerificationWindow("Picture", "haha.jpg")
-                .formVerificationWindow("Address", "Saint-Petersburg")
-                .formVerificationWindow("State and City", "NCR Gurgaon");
+                .formVerificationWindow("Gender", gender)
+                .formVerificationWindow("Mobile", userNumber)
+                .formVerificationWindow("Date of Birth", day + " " + month +"," + year)
+                .formVerificationWindow("Subjects", subject)
+                .formVerificationWindow("Hobbies", hobby)
+                .formVerificationWindow("Picture", imgFileName)
+                .formVerificationWindow("Address", address)
+                .formVerificationWindow("State and City", state + " " + city);
     }
 }
