@@ -37,14 +37,14 @@ public class RegistrationTests extends TestBase {
                 .setFirstName(firstname)
                 .setLastName(lastName)
                 .setEmail(userEmail)
-                .selectGender(gender) // male, female, other
-                .setUserMobNumber(userNumber) // 10 digits
+                .selectGender(gender) 
+                .setUserMobNumber(userNumber) 
                 .setDateOfBirth(day, month, year)
                 .subjectSet(subject)
-                .pickHobbies(hobby) // there are only: Sports, Reading, Music
+                .pickHobbies(hobby)
                 .uploadPicture(imgFilePath)
                 .setCurrentAddress(address)
-                .selectStateAndCity(state, city) // NCR : Delhi, Gurgaon, Noida; Uttar Pradesh : Arga, Lucknow, Merrut
+                .selectStateAndCity(state, city) 
                 .pressSubmitButton();
 
 
