@@ -20,7 +20,7 @@ public class RegistrationTests extends TestBase {
                 userEmail = faker.internet().emailAddress(),
                 gender = getRandomGender(),
                 userNumber = faker.phoneNumber().subscriberNumber(10),
-                day = String.format("%02d", faker.number().numberBetween(1, 28)),
+                day = String.valueOf(faker.random().nextInt(1,28)),
                 month = getRandomMonth(),
                 year = String.valueOf(getRandomInt(1900, 2100)),
                 subject = getRandomSubject(),
