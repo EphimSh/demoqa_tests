@@ -7,15 +7,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
 
-
-    public static void main(String[] args) {
-        getRandomState();
-        getRandomCity();
-    }
-
     static Faker faker = new Faker();
-
-
+    
     public static int getRandomInt(int min, long max) {
         return ThreadLocalRandom.current().nextInt(min, (int) (max + 1));
     }
