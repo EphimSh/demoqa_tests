@@ -3,6 +3,8 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
+import static utils.RandomUtils.faker;
+
 public class TextBoxTest extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
 

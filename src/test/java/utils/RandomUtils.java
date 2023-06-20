@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
 
-    static Faker faker = new Faker();
+    public static Faker faker = new Faker();
     
     public static int getRandomInt(int min, long max) {
         return ThreadLocalRandom.current().nextInt(min, (int) (max + 1));
