@@ -1,4 +1,4 @@
-package tests.pages.component.calendar;
+package pages.component.calendar;
 
 import com.codeborne.selenide.SelenideElement;
 
@@ -7,6 +7,7 @@ import static com.codeborne.selenide.Selectors.byTextCaseInsensitive;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CalendarComponent {
+
     private final SelenideElement datePicker = $("#dateOfBirth-wrapper");
 
 

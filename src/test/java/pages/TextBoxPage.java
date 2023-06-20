@@ -1,4 +1,4 @@
-package tests.pages;
+package pages;
 
 import com.codeborne.selenide.SelenideElement;
 
@@ -56,7 +56,6 @@ public class TextBoxPage {
         outputContainer.$(withText(key)).shouldHave(text(value));
         return this;
     }
-
 
 
 }

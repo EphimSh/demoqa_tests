@@ -1,9 +1,9 @@
-package tests.pages;
+package pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
-import tests.pages.component.calendar.CalendarComponent;
+import pages.component.calendar.CalendarComponent;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,7 +17,6 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationPage {
-
     CalendarComponent calendarComponent = new CalendarComponent();
 
     private final SelenideElement
@@ -130,5 +129,4 @@ public class RegistrationPage {
         tableResponsive.$(byText(key)).sibling(0).shouldHave(text(value));
         return this;
     }
-
 }

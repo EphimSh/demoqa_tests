@@ -1,9 +1,7 @@
-package tests;
-
 import org.junit.jupiter.api.Test;
-import tests.pages.RegistrationPage;
+import pages.RegistrationPage;
 
-public class RegistrationTests {
+public class RegistrationTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     public static String imgFilePath = "src/test/resources/haha.jpg";
@@ -39,6 +37,4 @@ public class RegistrationTests {
                 .formVerificationWindow("Address", "Saint-Petersburg")
                 .formVerificationWindow("State and City", "NCR Gurgaon");
     }
-
-
 }

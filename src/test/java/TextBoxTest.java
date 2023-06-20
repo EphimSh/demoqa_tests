@@ -1,10 +1,7 @@
-package tests;
-
 import org.junit.jupiter.api.Test;
-import tests.pages.TextBoxPage;
+import pages.TextBoxPage;
 
-public class TestBoxTest {
-
+public class TextBoxTest extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
@@ -23,5 +20,4 @@ public class TestBoxTest {
                 .outputVerification("Curr", "woods")
                 .outputVerification("Perm", "saint-petersburg");
     }
-
 }
