@@ -8,18 +8,27 @@ public class TextBoxTest extends TestBase {
 
     @Test
     void textBoxTest(){
+
+        String
+                firstName = faker.name().firstName(),
+                lastName = faker.name().lastName(),
+                email = faker.internet().emailAddress(),
+                currentAddress = faker.address().fullAddress(),
+                permanentAddress = faker.address().fullAddress();
+
+
         textBoxPage.openPage()
                 .removeBanner()
-                .setFullName("Addis", "Ababa")
-                .setEmail("addisababa@mail.com")
-                .setCurrentAddress("woods")
-                .setPermanentAddress("saint-petersburg")
+                .setFullName(firstName, lastName)
+                .setEmail(email)
+                .setCurrentAddress(currentAddress)
+                .setPermanentAddress(permanentAddress)
                 .pressSubmitButton();
 
         textBoxPage
-                .outputVerification("Name", "Addis Ababa")
-                .outputVerification("Email", "addisababa@mail.com")
-                .outputVerification("Curr", "woods")
-                .outputVerification("Perm", "saint-petersburg");
+                .outputVerification("Name", firstName + " " + lastName)
+                .outputVerification("Email", email)
+                .outputVerification("Curr", currentAddress)
+                .outputVerification("Perm", permanentAddress);
     }
 }
