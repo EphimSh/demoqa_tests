@@ -3,6 +3,8 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
+import static utils.RandomUtils.*;
+
 public class RegistrationTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -11,13 +13,18 @@ public class RegistrationTests extends TestBase {
     @Test
     void mySuccessfulRegistrationFormTest(){
 
+        String firstname = getRandomString(10),
+                lastName = getRandomString(10),
+                userEmail = getRandomEmail(),
+                userNumber = getRandomPhoneNumber();
+
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Addis")
-                .setLastName("Ababa")
-                .setEmail("addisababa@mail.com")
-                .selectGender("other") // male, female, other
-                .setUserMobNumber("1010101010") // 10 digits
+                .setFirstName(firstname)
+                .setLastName(lastName)
+                .setEmail(userEmail)
+                .selectGender(getRandomGender()) // male, female, other
+                .setUserMobNumber(userNumber) // 10 digits
                 .setDateOfBirth("16", "february", "1992")
                 .subjectSet("Computer Science")
                 .pickHobbies("Sports,Reading, Music") // there are only: Sports, Reading, Music
@@ -28,8 +35,8 @@ public class RegistrationTests extends TestBase {
 
 
         registrationPage
-                .formVerificationWindow("Student Name", "Addis Ababa")
-                .formVerificationWindow("Student Email", "addisababa@mail.com")
+                .formVerificationWindow("Student Name", firstname + " " + lastName)
+                .formVerificationWindow("Student Email", userEmail)
                 .formVerificationWindow("Gender", "other")
                 .formVerificationWindow("Mobile", "1010101010")
                 .formVerificationWindow("Date of Birth", "16 february,1992")
