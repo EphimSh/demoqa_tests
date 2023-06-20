@@ -12,7 +12,6 @@ public class TestBase {
     static void init(){
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
-
         Configuration.baseUrl = "https://demoqa.com/";
 
     }
